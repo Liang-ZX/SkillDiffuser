@@ -1,0 +1,5 @@
+python hrl/main_hot.py env=lorel_sawyer_obs method=traj_option dt.n_layer=1 dt.n_head=4 option_selector.option_transformer.n_layer=1 option_selector.option_transformer.n_head=4 option_selector.commitment_weight=0.1 option_selector.option_transformer.hidden_size=128 batch_size=256 seed=1 warmup_steps=5000 resume=True checkpoint_path="/cpfs01/user/liangzhixuan.p/code/clean-code/LISA/lisa/outputs/2023-10-19/10-32-01/checkpoints/LorlEnv-v0-40108-traj_option-2023-10-19-10:32:02/model_200.ckpt" diffuser.loadpath="/cpfs01/user/liangzhixuan.p/code/clean-code/LISA/lisa/outputs/2023-10-19/10-32-01/buckets/diffuser_log/checkpoint/state_320000.pt"
+
+#/cpfs01/user/liangzhixuan.p/code/clean-code/LISA/lisa/outputs/2023-10-19/10-32-01/checkpoints/LorlEnv-v0-40108-traj_option-2023-10-19-10:32:02
+
+#checkpoint_path="/home/zxliang/new-code/LISA-diffuser/lisa/outputs/2023-09-30/07-15-13/checkpoints/LorlEnv-v0-40108-traj_option-2023-09-30-07:15:13/model_250.ckpt" diffuser.loadpath="/home/zxliang/new-code/LISA-diffuser/lisa/outputs/2023-09-30/07-15-13/buckets/diffuser_log/checkpoint/state_400000.pt"

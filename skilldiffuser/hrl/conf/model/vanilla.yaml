@@ -1,0 +1,31 @@
+# @package _global_
+
+model:
+  name: vanilla
+
+  horizon: 5
+  K: 5
+  train_lm: True
+  method: ${model.name}
+  state_reconstruct: False
+  lang_reconstruct: False
+
+state_reconstructor:
+  num_hidden: 2
+  hidden_size: 128
+
+lang_reconstructor:
+  num_hidden: 2
+  hidden_size: 128
+  max_options: ## to be filled in code
+
+dt:
+    option_il: False
+    hidden_size: 128
+    n_layer: 2
+    n_head: 4
+    activation_function: 'relu'
+    n_positions: 1024
+    dropout: 0.1
+    no_states: False
+    no_actions: False

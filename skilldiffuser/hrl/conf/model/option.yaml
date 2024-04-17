@@ -1,0 +1,117 @@
+# @package _global_
+
+ema_decay: 0.995
+gradient_accumulate_every: 2
+
+diffuser:
+#  model: 'models.TemporalUnet'
+#  diffusion: 'models.GaussianDiffusion'
+#  horizon: ${model.horizon}
+##  dim_mults: '(1, 4, 8)'
+#  n_diffusion_steps: 128   # 512
+#  loss_type: 'l2'
+#  clip_denoised: True
+#  predict_epsilon: False
+#  ## loss weighting
+#  action_weight: 1
+##  loss_weights: None
+#  loss_discount: 1
+#  savepath: '/home/zxliang/new-code/LISA/lisa/outputs/diffuser_debug'
+
+  model: 'models.TemporalUnet'
+  diffusion: 'models.GaussianInvDynDiffusion'
+  horizon: ${model.horizon}  # 100
+  dim_mults: '(1, 4, 8)'
+  n_diffusion_steps: 200   # 512
+#  loss_type: 'l2'
+#  clip_denoised: True
+  predict_epsilon: True
+  ## loss weighting
+  action_weight: 10
+  loss_weights: None
+  loss_discount: 1
+
+  returns_condition: True
+  calc_energy: False
+  condition_dropout: 0.25
+  condition_guidance_w: 1.2
+  test_ret: 0.9
+#  renderer: 'utils.MuJoCoRenderer'
+  dim: 128
+  savepath: 'outputs/diffuser_debug'
+
+  ## dataset
+  loader: 'datasets.SequenceDataset'
+  normalizer: 'CDFNormalizer'
+  preprocess_fns: []
+  clip_denoised: True
+  use_padding: True
+  include_returns: True
+  discount: 0.99
+  max_path_length: 1000
+  inv_hidden_dim: 256
+  ar_inv: False
+  train_only_inv: False
+  termination_penalty: -100
+  returns_scale: 400.0 # Determined using rewards from the dataset
+
+  ## training
+  n_steps_per_epoch: 10000
+  loss_type: 'l2'
+  n_train_steps: 8e5  # 8e5  # 1e6
+  batch_size: 64  # equal to args.batch_size * fold num
+  learning_rate: 5e-3  # 2e-4
+  gradient_accumulate_every: 1  # 2
+  ema_decay: 0.995
+  log_freq: 1000
+  save_freq: 10000
+  sample_freq: 10000
+  n_saves: 5
+  save_parallel: False
+  n_reference: 8
+  save_checkpoints: True
+  loadpath: ## to be filled in code
+
+  ## misc
+  bucket: ''
+  seed: 100
+
+model:
+  name: option
+
+  horizon: 8
+  K: 8
+  train_lm: False
+  use_iq: ${use_iq}
+  method: ${model.name}
+  state_reconstruct: False
+  lang_reconstruct: False
+
+state_reconstructor:
+  num_hidden: 2
+  hidden_size: 128
+
+lang_reconstructor:
+  num_hidden: 2
+  hidden_size: 128
+  max_options: ## to be filled in code
+ 
+option_selector:    
+  horizon: ${model.horizon}
+  use_vq: True
+  kmeans_init: True
+  commitment_weight: 0.25
+  num_options: 20
+  num_hidden: 2
+  hidden_size: 128
+
+dt:
+    hidden_size: 128
+    n_layer: 4
+    n_head: 4
+    option_il: False
+    activation_function: 'relu'
+    n_positions: 1024
+    dropout: 0.1
+    no_actions: False
+    no_states: False

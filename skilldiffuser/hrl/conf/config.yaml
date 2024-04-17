@@ -1,0 +1,77 @@
+defaults:
+  # Set default options
+  - _self_
+  - model: traj_option
+  - env: lorel_sawyer_obs
+
+cuda_deterministic: False
+
+wandb: True
+
+seed: 0
+resume: False
+load_options: False
+load_frozen: False
+freeze_loaded_options: False
+checkpoint_path: 
+
+eval: False
+
+render: False  # False
+render_path: ./eval_${env.name}/
+
+batch_size: 64  # 512
+max_iters: 500  # TODO
+warmup_steps: 2500 # 5000
+
+lr_decay: 0.1
+decay_steps: 100000
+
+# options config
+option_dim: 128
+codebook_dim: 16
+
+parallel: False  # True
+savedir: 'checkpoints'
+savepath: ## to be filled in code
+
+method: ## to be filled in code
+use_iq: False ## use IQ-Learn objective instead of BC
+
+learning_rate: 1e-4
+lm_learning_rate: 1e-6
+weight_decay: 1e-4
+os_learning_rate: 1e-4
+
+trainer:
+  device:  ## to be filled in code
+  state_il: False
+  num_eval_episodes: 100
+  eval_every: 1
+  K: ${model.K}
+
+model:   
+  # Model specific configuration
+
+env:   
+  # Env specific configuration
+    skip_words: ['go', 'to', 'the', 'a', '[SEP]']
+
+option_selector:    
+  # Option configuration
+  option_transformer:
+
+iq:
+  alpha: 0.1
+  div: chi
+  loss: value
+  gamma: 0.99
+  # Don't use target updates
+  use_target: False
+
+# Extra args
+log_interval: 1  # Log every this many iterations
+save_interval: 50 # Save networks every this many iterations
+hydra_base_dir: ""
+exp_name: ''
+project_name: ${env.name}
