@@ -1,6 +1,6 @@
-# SkillDiffuser on Compositional Tasks for LOReL Sawyer Robot
+# SkillDiffuser on LOReL Compositional Tasks for LOReL
 
-This is the official PyTorch implementation of paper:
+This is a part of the official PyTorch implementation of paper:
 
 > ### [SkillDiffuser: Interpretable Hierarchical Planning via Skill Abstractions in Diffusion-Based Task Execution](https://arxiv.org/abs/2312.11598)
 > Zhixuan Liang, Yao Mu, Hengbo Ma, Masayoshi Tomizuka, Mingyu Ding, Ping Luo
