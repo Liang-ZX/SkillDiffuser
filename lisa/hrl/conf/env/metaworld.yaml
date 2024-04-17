@@ -1,0 +1,41 @@
+# @package _global_
+
+learning_rate: 1e-5
+lm_learning_rate: 1e-7
+weight_decay: 1e-4
+os_learning_rate: 1e-4  # 1e-5
+
+diff_weight: 0.01
+
+env:
+  name: MetaWorld-MT10-v2
+  state_dim: 2048   # (3, 224, 224)  # actually use features 2048
+  action_dim: 4
+  discrete: False
+  eval_offline: False
+  use_state: False
+  eval_episode_factor: 10
+  eval_env: 
+
+train_dataset:
+  expert_location: '/home/zxliang/dataset/metaworld/lisa_data/r3m_MT10_20/data.pkl'
+  num_trajectories: 1000  # 3397
+  normalize_states: False
+  no_lang: False
+  seed: ${seed}
+  aug: True
+
+val_dataset:
+  expert_location: 
+  num_trajectories: ${trainer.num_eval_episodes}
+  normalize_states: False
+  seed: ${seed}
+  aug: True
+
+
+trainer:
+  device:  ## to be filled in code
+  state_il: False
+  num_eval_episodes: 3  # 5
+  eval_every: 20
+  K: ${model.K}

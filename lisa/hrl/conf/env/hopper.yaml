@@ -1,0 +1,56 @@
+# @package _global_
+
+env:
+  name: Hopper-v2
+  state_dim: 11
+  action_dim: 3
+  discrete: False
+  eval_offline: False
+  eval_episode_factor: 2
+  eval_env: 
+
+train_dataset:
+  expert_location: '/sailhome/divgarg/implicit-irl/experts/Hopper-v2_25.pkl'
+  num_trajectories: 10
+  normalize_states: False
+  no_lang: False
+  seed: ${seed}
+
+val_dataset:
+  expert_location: 
+  num_trajectories: ${trainer.num_eval_episodes}
+  normalize_states: False
+  seed: ${seed}
+
+codebook_dim: 8
+
+trainer:
+  device:  ## to be filled in code
+  state_il: False
+  num_eval_episodes: 5
+  eval_every: 5
+  K: ${model.K}
+
+model:
+  train_lm: False
+
+option_selector:
+  commitment_weight: 20
+  option_transformer:
+    n_layer: 2
+    n_head: 4
+
+dt:
+    hidden_size: 128
+    n_layer: 2
+    n_head: 4
+    activation_function: 'relu'
+    n_positions: 1024
+    dropout: 0.1
+    no_states: false
+    no_actions: false
+
+learning_rate: 1e-4
+lm_learning_rate: 1e-6
+weight_decay: 1e-4
+os_learning_rate: 1e-4

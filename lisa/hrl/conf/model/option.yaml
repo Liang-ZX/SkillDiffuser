@@ -1,0 +1,37 @@
+# @package _global_
+
+model:
+  name: option
+  K: 5
+  horizon: 5
+  train_lm: True
+  use_iq: ${use_iq}
+  method: ${model.name}
+  state_reconstruct: False
+  lang_reconstruct: False
+
+state_reconstructor:
+  num_hidden: 2
+  hidden_size: 128
+
+lang_reconstructor:
+  num_hidden: 2
+  hidden_size: 128
+  max_options: ## to be filled in code
+ 
+option_selector:    
+  horizon: ${model.horizon}
+  use_vq: True
+  kmeans_init: True
+  commitment_weight: 0.25
+  num_options: 20
+  num_hidden: 2
+  hidden_size: 128
+
+dt:
+    hidden_size: 128
+    n_layer: 4
+    n_head: 4
+    activation_function: 'relu'
+    n_positions: 1024
+    dropout: 0.1

@@ -1,0 +1,30 @@
+# @package _global_
+
+env:
+  name: 
+  state_dim: (12, 64, 64)
+  action_dim: 5
+  discrete: False
+  eval_offline: True 
+  use_state: False
+
+train_dataset:
+  expert_location: '/atlas/u/divgarg/datasets/lorel/may_06_franka_3k/prep_data.pkl'
+  num_trajectories: 10000
+  normalize_states: True
+  no_lang: False
+  seed: ${seed}
+  aug: True
+
+val_dataset:
+  expert_location: 
+  num_trajectories: ${trainer.num_eval_episodes}
+  normalize_states: True
+  seed: ${seed}
+
+trainer:
+  device:  ## to be filled in code
+  state_il: False
+  num_eval_episodes: 5
+  eval_every: 5
+  K: ${model.K}

@@ -1,0 +1,445 @@
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script async="" src="./js/analytics.js"></script>
+	<script src="./js/jsapi" type="text/javascript"></script>
+	<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+	<!-- Google Tag Manager -->
+	<script>(function (w, d, s, l, i) {
+			w[l] = w[l] || []; w[l].push({
+				'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+			}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-WLCRH4G');</script>
+	<!-- End Google Tag Manager -->
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link href="style.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i"
+		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic"
+		rel="stylesheet" type="text/css">
+
+	<title>LISA: Learning Interpretable Skill Abstractions from Language</title>
+	<meta property="og:image" content="https://div99.github.io/LISA/approach.png">
+	<meta property="og:title" content="LISA: Learning Interpretable Skill Abstractions from Language">
+	  <meta property="og:type" content="website" />
+	  <meta property="og:url" content="https://div99.github.io/LISA/" />
+	  <meta property="og:description" content=" A new framework for unsupervised skill learning using Imitation to reach SOTA performance on long-range language compositions.">
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.984.0" data-gr-ext-installed="">
+	<!-- Google Tag Manager -->
+	<script>(function (w, d, s, l, i) {
+			w[l] = w[l] || []; w[l].push({
+				'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+			}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-WLCRH4G');</script>
+	<!-- End Google Tag Manager -->
+	<br>
+	<center>
+		<div id="hero">
+			<h1>LISA: Learning Interpretable Skill Abstractions from Language</h1>
+			<div class="authors">
+				<table align="center" width="1030px">
+					<tbody>
+						<tr>
+							<td align="center" width="300px">
+								<center>
+									<span><a href="https://divyanshgarg.com/">Divyansh
+											Garg</a><sup>1*<sup></span>
+								</center>
+							</td>
+							<td align="center" width="300px">
+								<center>
+									<span><a href="https://skandavaidyanath.github.io/">Skanda
+                                             Vaidyanath</a><sup>1*<sup></span>
+								</center>
+							</td>
+							<td align="center" width="300px">
+								<center>
+									<span><a href="https://scholar.google.com/citations?user=xhMkQfwAAAAJ&hl=en">Kuno Kim</a><sup>1<sup></span>
+								</center>
+							</td>
+							<td align="center" width="300px">
+								<center>
+									<span><a href="https://tsong.me/">Jiaming
+											Song</a><sup>1<sup></span>
+								</center>
+							</td>
+							<td align=" center" width="300px">
+								<center>
+									<span><a href="https://cs.stanford.edu/~ermon/">Stefano
+											Ermon</a><sup>1<sup></span>
+								</center>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<table align="center" width="700px">
+				<tbody>
+					<tr>
+						<td align="center" width="200px">
+							<center>
+								<span style="font-size:20px">Stanford University<sup>1</sup></span>
+							</center>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<table align="center" width="800px">
+				<tbody>
+					<tr>
+						<td align="center" width="150px">
+							<center>
+								<span style="font-size:25px">In NeurIPS 2022</span>
+								</span>
+							</center>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+	</center>
+	<center>
+		<table style="margin-top: 20px">
+			<tbody>
+				<tr>
+					<td>
+						<center><a href="https://arxiv.org/abs/2203.00054" target="_blank" class="nav-link link"><img
+									class="filter-blue" src="icons/paper_icon.svg" width="48" height="48"><br>Paper</a>
+						</center>
+					</td>
+					<td>
+						<center><a href="https://github.com/Div99/LISA" target="_blank" class="nav-link link"><img
+									class="filter-blue" src="icons/github.svg" width="48" height="48"><br>Code<br></a>
+						</center>
+					</td>
+					<td>
+						<center><a
+							href="https://slideslive.com/embed/presentation/38990847?embed_parent_url=https%3A%2F%2Fneurips.cc%2Fvirtual%2F2021%2Fposter%2F26537&embed_container_origin=https%3A%2F%2Fneurips.cc&embed_container_id=presentation-embed-38967041&auto_load=true&auto_play=false&zoom_ratio=&disable_fullscreen=false&locale=en&vertical_enabled=true&vertical_enabled_on_mobile=false&allow_hidden_controls_when_paused=true&fit_to_viewport=true&user_uuid=2f7f8b9e-d23a-478f-ad00-f0905aa4836d"
+							target="_blank" class="nav-link link"><img class="filter-blue" src="icons/youtube.svg"
+								width="48" height="48"><br>Talk<br></a></center>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</center><br>
+	</div>
+	<!-- <table align="center" width="650px">
+		<tbody>
+			<tr>
+				<td align="center" width="150px">
+					<center>
+						<span style="font-size:20px"><a href="https://github.com/Div99/W-Stereo-Disp">
+								[GitHub]</a></span>
+					</center>
+				</td>
+				<td align="center" width="150px">
+					<center>
+						<span style="font-size:20px"><a href="https://slideslive.com/38937842"> [Talk]</a></span>
+					</center>
+				</td>
+				<td align="center" width="150px">
+					<center>
+						<span style="font-size:20px"><a href="https://arxiv.org/abs/2007.03085"> [Paper]</a></span>
+					</center>
+				</td>
+				<td align="center" width="150px">
+					<center>
+						<span style="font-size:20px"><a href="poster.pdf"> [Poster]</a></span>
+					</center>
+				</td>
+			</tr>
+			<tr>
+			</tr>
+		</tbody>
+	</table> -->
+	<!--   		  <br><br>
+<hr> -->
+
+	<table align="center" width="750px">
+		<tbody>
+			<tr>
+				<td width="200px">
+					<center>
+						<img class="img-banner" src="heatmap.png"><br>
+					</center>
+				</td>
+			</tr>
+			<tr>
+				<td width=" 300px">
+					<center>
+						<div style="font-size:17px; padding-bottom: 10px">
+							<i>Learned Interpretable Skill Abstractions from Language<br></i>
+						</div>
+						<span style="font-size:15px;"><i>We show the corresponding word frequencies for each learned skill code from 0-99 on BabyAI BossLevel task.</i>
+						</span>
+					</center>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<hr>
+	<center>
+		<h1>Abstract</h1>
+	</center>
+	<table align="center" width="850px">
+		<tbody>
+			<tr>
+				<td>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<p class="mt-3">
+		Learning policies that effectively utilize language instructions in complex, multitask environments is an important problem in sequential decision-making. While it is
+        possible to condition on the entire language instruction directly, such an approach
+        could suffer from generalization issues. To encode complex instructions into skills
+        that can generalize to unseen instructions, we propose <em><strong>Learning Interpretable Skill
+        Abstractions (LISA)</strong></em>, a hierarchical imitation learning framework that can learn
+        diverse, interpretable <em><strong>primitive behaviors or skills</strong></em> from language-conditioned demonstrations. LISA uses
+        vector quantization to learn discrete skill codes that are highly correlated with
+        language instructions and the behavior of the learned policy. In navigation and
+        robotic manipulation environments, <em>LISA outperforms a strong non-hierarchical
+        Decision Transformer baseline in the low data regime and is able to compose learned skills to solve
+        tasks containing unseen long-range instructions</em>. Our method demonstrates a more
+        natural way to condition on language in sequential decision-making problems and
+        achieve interpretable and controllable behavior with the learned skills.
+	</p>
+	<br><br>
+	<hr>
+	<center>
+		<h1>Behavior on unseen composition instructions</h1>
+	</center>
+	<br>
+	<table align="center" width="600px">
+		<tbody>
+			<tr>
+				<td align="center"><img class="img-banner" style="height:500px" src="babyai.gif"><br>
+					<center>
+						<span style="font-size:14pt">
+							 <span
+								class="text-danger">Language Instruction</span>: <i>"go to a purple ball, then go the green ball and put the box on your left next to the green key and put the yellow ball next to a purple ball"</i>
+						</span>
+					</center>
+				</td>
+				<!-- </br> -->
+				<!-- </br> -->
+
+			</tr>
+			<tr>
+				<td width="200px">
+					<center>
+						<img style="height: 500px;margin-top: 50px;" class="img-banner" src="teaser.gif"><br>
+					</center>
+					<center>
+						<span style="font-size:14pt">
+							 <span
+								class="text-danger">Language Instruction</span>: <i>"open the drawer and move the black mug right"</i>
+						</span>
+					</center>
+				</td>
+			</tr>
+			<!-- <tr>
+				<td width=" 300px">
+					<center>
+						<div style="font-size:17px; padding-bottom: 10px">
+							<i>Example of LISA <br></i>
+						</div>
+						<div style="font-size:15px; padding-bottom: 10px">
+							<span class="text-danger">Language Instruction</span>: <i>"Open the drawer and move the black mug right"</i>
+						</div>
+					</center>
+				</td>
+			</tr> -->
+		</tbody>
+	</table>
+	<br>
+	<br>
+	<hr>
+
+<!-- 	<center>
+		<h1>
+		</h1>
+	</center>
+	<table align="center" width="1100px">
+		<tbody>
+			<tr>
+			</tr>
+		</tbody>
+	</table>
+
+	<table align="center" width="800px">
+		<tbody>
+			<tr>
+				<td align="center" width="800px">
+					<div id="presentation-embed-38990847" class="slp my-auto" style="width: 100%;">
+						<iframe
+							src="https://slideslive.com/embed/presentation/38990847?embed_parent_url=https%3A%2F%2Fneurips.cc%2Fvirtual%2F2021%2Fposter%2F26537&embed_container_origin=https%3A%2F%2Fneurips.cc&embed_container_id=presentation-embed-38990847&auto_load=true&auto_play=false&zoom_ratio=&disable_fullscreen=false&locale=en&vertical_enabled=true&vertical_enabled_on_mobile=false&allow_hidden_controls_when_paused=true&fit_to_viewport=true&user_uuid=2f7f8b9e-d23a-478f-ad00-f0905aa4836d"
+							height="564" scrolling="no" frameborder="0"
+							sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-top-navigation"
+							allow="autoplay; fullscreen" allowfullscreen="" webkitallowfullscreen=""
+							mozallowfullscreen="" style="margin: 0px auto; display: block; width: 100%;"></iframe>
+					</div>
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+	<hr> -->
+	<center>
+		<h1>Approach</h1>
+	</center>
+	<table align="center" width="600px">
+		<tbody>
+			<tr>
+				<td align="center"><a href="https://github.com/Div99/LISA"><img class="round"
+							style="height:700px; margin-left: 60px" src="approach.png"></a><br>
+							<center>
+								<span style="font-size:14pt">
+									Given a language instruction, <b>LISA</b> learns discrete skill abstractions, picked from a learned codebook. The policy conditioned on the skill code learns to execute distinct behaviors and solve different sub-goals.
+								</span>
+							</center>
+						</td>
+				<!-- </br> -->
+			</tr>
+		</tbody>
+	</table>
+	<center> <br>
+		<!-- <span style="font-size:28px">Code coming soon!</span></i>			  	 -->
+		<!-- <span style="font-size:24px">&nbsp;<a href="https://github.com/Div99/LISA">[GitHub]</a>
+		</span><i></i>
+		<span style="font-size:28px"></span>
+		<br> -->
+	</center>
+	<table align="center" width="800px">
+		<tbody>
+			<tr></tr>
+		</tbody>
+	</table>
+	<br>
+	<hr>
+	<!-- <table align=center width=550px> -->
+	<center>
+		<h1>Learned Skills</h1>
+	</center>
+	<br>
+	<table align="center" width="600px">
+		<tbody>
+			<tr>
+				<td align="center"><img class="round" style="height:400px" src="learned-skills.png"></td>
+				<!-- </br> -->
+				<!-- </br> -->
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<center>
+		<span style="font-size:14pt">
+			We show the most correlated words for 4 different learnt skill codes on LORL. We can see that the codes represent interpretable and distinguishable skills. For e.g, the code on the top left corresponds to closing the drawer.
+		</span>
+	</center>
+	<br>
+	<hr>
+	<center>
+		<h1>Paper</h1>
+	</center>
+	<table align="center" width="600px">
+		<tbody>
+			<tr>
+				<td align="center"><a href="https://arxiv.org/abs/2203.00054"><img class="img-paper"
+							src="paper-thumbnail.jpg"></a></td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<!-- <table align="center" width="500px">
+		<tbody>
+			<tr>
+				<td><span style="font-size:24px">
+						<center>
+							<a
+								href="https://proceedings.neurips.cc/paper/2021/file/210f760a89db30aa72ca258a3483cc7f-Paper.pdf">[Paper]</a>
+						</center>
+					</span></td>
+				<td><span style="font-size:24px">
+						<center>
+							<a
+								href="https://proceedings.neurips.cc/paper/2021/file/210f760a89db30aa72ca258a3483cc7f-Supplemental.pdf">[Suppl]</a>
+						</center>
+					</span></td>
+				<td><span style="font-size:24px">
+						<center>
+							<a href="neurips_2022_lisa.txt">[Bibtex]</a>
+						</center>
+					</span></td>
+			</tr>
+		</tbody>
+	</table> -->
+	<br>
+	<hr>
+	<center>
+		<h1>Poster</h1>
+	</center>
+	<table align="center" width="600px">
+		<br>
+		<tbody>
+			<tr>
+				<td align="center"><a href="LISA poster.pdf"><img class="paper-big" style="height:650px"
+							src="poster.jpg"></a></td>
+			</tr>
+		</tbody>
+	</table>
+	<br>
+	<hr>
+	<center>
+		<h1>Citation</h1>
+	</center>
+	<table align="center" width="1000px">
+		<tbody>
+			<tr>
+				<td><span style="font-size:14pt">
+					</span>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<pre>
+        @inproceedings{
+            lisa2022,
+            title={{LISA}: Learning Interpretable Skill Abstractions from Language},
+            author={Divyansh Garg and Skanda Vaidyanath and Kuno Kim and Jiaming Song and Stefano Ermon},
+            booktitle={Advances in Neural Information Processing Systems},
+            editor={Alice H. Oh and Alekh Agarwal and Danielle Belgrave and Kyunghyun Cho},
+            year={2022},
+            url={https://openreview.net/forum?id=XZhipvOUBB}
+            }
+</pre>
+	<br><br>
+	<br><br>
+	<script>
+		(function (i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date(); a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+		ga('create', 'UA-75863369-1', 'auto');
+		ga('send', 'pageview');
+	</script>
+</body>
+
+</html>

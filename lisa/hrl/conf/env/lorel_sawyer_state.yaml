@@ -1,0 +1,31 @@
+# @package _global_
+
+env:
+  name: LorlEnv-v0
+  state_dim: 15
+  action_dim: 5
+  discrete: False
+  eval_offline: False
+  use_state: True
+  eval_episode_factor: 10
+
+train_dataset:
+  expert_location: '/atlas/u/divgarg/datasets/lorel/may_08_sawyer_50k/prep_data.pkl'
+  num_trajectories: 40108
+  normalize_states: False
+  seed: ${seed}
+
+val_dataset:
+  expert_location: 
+  num_trajectories: ${trainer.num_eval_episodes}
+  normalize_states: False
+  no_lang: False
+  seed: ${seed}
+
+
+trainer:
+  device:  ## to be filled in code
+  state_il: False
+  num_eval_episodes: 5
+  eval_every: 5
+  K: ${model.K}
