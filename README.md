@@ -1,4 +1,4 @@
-# SkillDiffuser on LOReL Compositional Tasks for LOReL
+# SkillDiffuser on LOReL Compositional Tasks
 
 This is a part of the official PyTorch implementation of paper:
 
