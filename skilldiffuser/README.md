@@ -31,6 +31,14 @@ cd lorel/env
 pip install -e .
 ```
 
+### Setup LOReL Dataset
+1. Download the dataset from [LOReL](https://drive.google.com/file/d/1pLnctqkOzyWZa1F1zTFqkNgUzSkUCtEv/view?usp=sharing)
+2. Process the dataset from h5py to pickle
+```shell
+python h5py2pkl.py --root_path <path to dir of may_08_sawyer_50k> --output_name <output_file_name.pkl>
+```
+3. Change the path in `hrl/conf/env/lorel_sawyer_obs.yaml` to the processed dataset.
+
 ## Instructions
 
 Our code for running SkillDiffuser experiments is present in `hrl` folder.

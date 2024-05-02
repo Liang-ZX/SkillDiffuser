@@ -16,7 +16,7 @@ env:
   eval_env: 
 
 train_dataset:
-  expert_location: '/home/zxliang/dataset/lorel/may_08_sawyer_50k/prep_data3.pkl'
+  expert_location: '/path/to/prep_data.pkl'
   num_trajectories: 40108
   normalize_states: False
   no_lang: False
