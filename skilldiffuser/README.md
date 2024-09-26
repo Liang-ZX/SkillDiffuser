@@ -48,6 +48,7 @@ To run the code, please use the following command:
 `./train_lorel_compose.sh`
 
 This is a sample command intended to show the usage of different flags available. The checkpoints can be downloaded from [here](https://connecthkuhk-my.sharepoint.com/:f:/g/personal/liangzx_connect_hku_hk/Em3qBc3AxWpOkYR7Pgd7lnUBH0bkLsILMpgUX2Xg5l3YGg?e=QslO6n).
+(The checkpoint is used for fine-tuning, not for evaluation directly.)
 
 ## License
 
